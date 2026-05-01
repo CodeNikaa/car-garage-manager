@@ -1,2 +1,2 @@
 # car-garage-manager
-Read the README file
+Manage your favorite Cars and maybe also show them later on, further Descriptions will follow
