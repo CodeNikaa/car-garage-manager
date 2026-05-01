@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://trusted.com;">
-    <meta http-equiv="X-Frame-Options" content="deny">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Frame-Options" content="deny">-->
     <title>Car Garage Manager</title>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,13 +29,11 @@
     </nav>
         <div class="add-cars">
         <form action="" method="post" class="">
-            <label for="input-field"></label>
-            <input type="text" name="input-field" id="text-field" placeholder="Click here and enter your vehicle">
+            <input type="text" name="text-field" id="text-field" placeholder="Click here and enter your vehicle">
         </form>
     </div>
-    <section class="card-section">
-        <div></div>
-        <div></div>
+    <section class="card-section" id="card-showcase">
+
     </section>
 
     <script src="./src/main.js"></script>
