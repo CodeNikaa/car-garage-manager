@@ -1,9 +1,13 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import './db.js';
+import router from './routes/cars.js';
 import express from 'express';
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use('/api/cars', router);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
