@@ -1,24 +1,39 @@
 const getShowcase = document.getElementById('card-showcase');
+const getAddBtn = document.querySelector('.addBtn');
+const getCloseBtn = document.getElementById('exitBtn');
 
-const listOfCars = [
-    {marke: "Audi", modell: "A4 B5", baujahr: 1999, motorcode: "ADR"},
-    {marke: "Audi", modell: "RS3 8V", baujahr: 2016, motorcode: "DAZA"},
-    {marke: "Audi", modell: "S4 B5", baujahr: 1999, motorcode: "AGB"},
-]
+async function loadCars() {
+    
+    const response = await fetch('/api/cars');
+    const cars = await response.json();
 
-listOfCars.forEach((car) => {
-    const card = document.createElement("div");
-    card.classList = "card";
+    cars.forEach((car) => {
 
-    const content = `
-        <h2 class="card-header"> ${car.marke}</h2>
-        <div class="card-body">
-            <h3>Modell: ${car.modell}</h3>
-            <h3>Baujahr: ${car.baujahr}</h3>
-            <h3>Motorcode: ${car.motorcode}</h3>
-        </div>
-    `
-    card.innerHTML = content; 
-    getShowcase.appendChild(card);
-});
+        const card = document.createElement("div");
+        card.classList = "card";
+
+        const content = `
+            <h2 class="card-header"> ${car.marke}</h2>
+            <div class="card-body">
+                <h3>Modell: ${car.modell}</h3>
+                <h3>Baujahr: ${car.baujahr}</h3>
+                <h3>Motorcode: ${car.motorcode}</h3>
+            </div>
+        `
+        card.innerHTML = content; 
+        getShowcase.appendChild(card);
+        
+})};
+
+loadCars();
+
+getAddBtn.addEventListener('click', () => {
+    document.getElementById('modal-overlay').style.display = 'flex';
+})
+
+getCloseBtn.addEventListener('click', () => {
+    document.getElementById('modal-overlay').style.display = 'none';
+})
+
+
 

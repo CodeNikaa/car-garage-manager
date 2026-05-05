@@ -28,13 +28,35 @@
         </ul>
     </nav>
         <div class="add-cars">
+        <button class="delBtn"><span>-</span></button>
         <form action="" method="post" class="">
             <input type="text" name="text-field" id="text-field" placeholder="Click here and enter your vehicle">
         </form>
+        <button class="addBtn"><span>+</span></button>
     </div>
+    
     <section class="card-section" id="card-showcase">
 
     </section>
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-box">
+            <h1 class="modal-header">Zum erstellen eines Fahrzeugs bitte folgende Daten angeben</h1>
+            <form action="" method="post" class="createForm">
+                <label for="marke">Marke: </label>
+                <input type="text" name="marke" id="marke" required>
+                <label for="modell">Modell: </label>
+                <input type="text" name="modell" id="modell" required>
+                <label for="baujahr">Baujahr: </label>
+                <input type="text" name="baujahr" id="baujahr" required>
+                <label for="motorcode">Motorcode: </label>
+                <input type="text" name="motorcode" id="motorcode" required>
+                <div class="submitBtn-box">
+                <button type="submit" class="submitBtn">Anlegen</button>
+                </div>
+            </form>
+        </div>
+        <div id="exitBtn">X</div>
+    </div>
 
     <script src="./src/main.js"></script>
 </body>
