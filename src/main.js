@@ -1,6 +1,8 @@
 const getShowcase = document.getElementById('card-showcase');
 const getAddBtn = document.querySelector('.addBtn');
 const getCloseBtn = document.getElementById('exitBtn');
+const modal = document.getElementById('modal-overlay')
+const createForm = document.getElementsByClassName('createForm');
 
 async function loadCars() {
     
@@ -28,12 +30,41 @@ async function loadCars() {
 loadCars();
 
 getAddBtn.addEventListener('click', () => {
-    document.getElementById('modal-overlay').style.display = 'flex';
+    modal.style.display = 'flex';
 })
 
 getCloseBtn.addEventListener('click', () => {
-    document.getElementById('modal-overlay').style.display = 'none';
+    modal.style.display = 'none';
 })
 
 
+document.addEventListener('click', (event) => {
+    
+    if (
+        event.target === modal || event.target.classList.contains("modal-overlay")
+    ) {
+        modal.style.display = 'none';
+    }
+});
+
+createForm.addEventListener('submit', async (event) => {
+
+    const getMake = document.getElementById('marke').value;
+    const getModell = document.getElementById('modell').value;
+    const getYearOfConstruction = document.getElementById('baujahr').value;
+    const getMotorcode = document.getElementById('motorcode').value;
+
+        const newCar = {
+        getMake,
+        getModell,
+        getYearOfConstruction,
+        getMotorcode
+    };
+
+    await fetch('/api/cars', {
+        method: 'Post',
+    })
+    
+    event.preventDefault();
+})
 
