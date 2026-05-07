@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import './db.js';
-import router from './routes/cars.js';
+import router from './routes/router.js';
 import express from 'express';
 import path from 'path';
 
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.static('../'))
-app.use('/api/cars', router);
+app.use('/api/router', router);
 
 app.get('/', (req, res) => {
 

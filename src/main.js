@@ -2,11 +2,11 @@ const getShowcase = document.getElementById('card-showcase');
 const getAddBtn = document.querySelector('.addBtn');
 const getCloseBtn = document.getElementById('exitBtn');
 const modal = document.getElementById('modal-overlay')
-const createForm = document.getElementsByClassName('createForm');
+const createForm = document.querySelector('#createForm');
 
 async function loadCars() {
     
-    const response = await fetch('/api/cars');
+    const response = await fetch('/api/router');
     const cars = await response.json();
 
     cars.forEach((car) => {
@@ -49,12 +49,14 @@ document.addEventListener('click', (event) => {
 
 createForm.addEventListener('submit', async (event) => {
 
+    event.preventDefault();
+    
     const getMake = document.getElementById('marke').value;
     const getModell = document.getElementById('modell').value;
     const getYearOfConstruction = document.getElementById('baujahr').value;
     const getMotorcode = document.getElementById('motorcode').value;
 
-        const newCar = {
+    const newCar = {
         getMake,
         getModell,
         getYearOfConstruction,
@@ -63,8 +65,9 @@ createForm.addEventListener('submit', async (event) => {
 
     await fetch('/api/cars', {
         method: 'Post',
-    })
+        headers: { 'Content-Type': 'application/json'}, 
+        body: JSON.stringify(newCar)  
+    });
     
-    event.preventDefault();
-})
+});
 
